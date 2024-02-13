@@ -1,0 +1,4 @@
+#Version: 1.0
+#Author: github.com/furkun/RoM-Translator
+Translator.lua
+Translator.xml

@@ -1,0 +1,318 @@
+<Ui xmlns="http://www.runewaker.com/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.runewaker.com/ UI.xsd">
+	<Button name="TranslatorMinimap"  hidden="true" inherits="MinimapButtonTemplate" parent="UIParent">
+		<Size>
+			<AbsDimension y="24" x="24"/>
+		</Size>
+		<Anchors>
+			<Anchor point="CENTER" relativeTo="MinimapViewFrame" relativePoint="CENTER">
+				<Offset>
+					<RelDimension x="0" y="0"/>
+				</Offset>
+			</Anchor>
+		</Anchors>
+		<NormalTexture file="interface\addons\Translator\img\icon.png"/>
+		<PushedTexture file="interface\addons\Translator\img\icon.png"/>
+		<Scripts>
+			<OnClick>
+				ToggleUIFrame(Translator_Frame)
+			</OnClick>
+			<OnEnter>
+				GameTooltip:SetOwner(this, "ANCHOR_BOTTOMRIGHT", 0, 0);
+				GameTooltip:SetText(Translator.loca.GetText("name"))
+				GameTooltip:AddSeparator();
+				GameTooltip:AddLine(UI_MINIMAPBUTTON_MOVE, 0, 0.75, 0.95) -- Set move notification --
+				GameTooltip:Show();
+			</OnEnter>
+			<OnLeave>
+				GameTooltip:Hide()
+			</OnLeave>
+		</Scripts>
+	</Button>	
+
+	<Frame name="Translator_Frame" parent="UIParent" enableMouse="true"  hidden="true" inherits="PyTemp_BasicFrame_Template">
+		<Size>
+			<AbsDimension  x="530" y="350"/>
+		</Size>
+		<Frames>
+			<Frame name="$parent_Tabs" inherits="PyTemp_TabFrame_Template">
+				<Anchors>
+					<Anchor point="TOPLEFT">
+						<Offset>
+							<AbsDimension x="10" y="0"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+			</Frame>
+			<Frame name="$parent_Events" hidden="true" >
+				<Frames>
+					<Button name="$parent_Filter" frameLevel="1" id="1" inherits="PyTemp_Button_Template">
+						<Size>
+							<AbsDimension  x="80" y="20"/>
+						</Size>
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeTo="$parent" relativePoint="TOPLEFT">
+								<Offset>
+									<AbsDimension x="10" y="40"/>
+								</Offset>
+							</Anchor>
+						</Anchors>
+					</Button>
+					<Frame name="$parent_List" frameLevel="0" id="1" inherits="PyTemp_List_Frame_Template">
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeTo="$parent" relativePoint="TOPLEFT">
+								<Offset>
+									<AbsDimension x="10" y="60"/>
+								</Offset>
+							</Anchor>
+						</Anchors>
+					</Frame>
+				</Frames>
+			</Frame>
+			<Frame name="$parent_Frames" hidden="true">
+				<Frames>
+					<Button name="$parent_Filter" frameLevel="1" id="2"  inherits="PyTemp_Button_Template">
+						<Size>
+							<AbsDimension  x="80" y="20"/>
+						</Size>
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeTo="$parent" relativePoint="TOPLEFT">
+								<Offset>
+									<AbsDimension x="10" y="40"/>
+								</Offset>
+							</Anchor>
+						</Anchors>
+					</Button>
+					<Frame name="$parent_List" frameLevel="0"  id="2" inherits="PyTemp_List_Frame_Template">
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeTo="$parent" relativePoint="TOPLEFT">
+								<Offset>
+									<AbsDimension x="10" y="60"/>
+								</Offset>
+							</Anchor>
+						</Anchors>
+					</Frame>
+				</Frames>
+			</Frame>
+			<Frame name="$parent_Config" hidden="true">
+				<Frames>
+					<CheckButton name="$parent_ENABLED" inherits="PyTemp_Check_Template" id="1">
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeTo="$parent" relativePoint="TOPLEFT">
+								<Offset>
+									<AbsDimension x="10" y="40"/>
+								</Offset>
+							</Anchor>
+						</Anchors>
+					</CheckButton>
+					<CheckButton name="$parent_Chat1" inherits="PyTemp_Check_Template" id="2">
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeTo="$parent_ENABLED" relativePoint="BOTTOMLEFT">
+								<Offset>
+									<AbsDimension x="0" y="15"/>
+								</Offset>
+							</Anchor>
+						</Anchors>
+					</CheckButton>
+					<CheckButton name="$parent_Chat2" inherits="PyTemp_Check_Template" id="2">
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeTo="$parent_Chat1" relativePoint="BOTTOMLEFT">
+								<Offset>
+									<AbsDimension x="0" y="0"/>
+								</Offset>
+							</Anchor>
+						</Anchors>
+					</CheckButton>
+					<CheckButton name="$parent_Chat3" inherits="PyTemp_Check_Template" id="2">
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeTo="$parent_Chat2" relativePoint="BOTTOMLEFT">
+								<Offset>
+									<AbsDimension x="0" y="0"/>
+								</Offset>
+							</Anchor>
+						</Anchors>
+					</CheckButton>
+					<CheckButton name="$parent_Chat4" inherits="PyTemp_Check_Template" id="2">
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeTo="$parent_Chat3" relativePoint="BOTTOMLEFT">
+								<Offset>
+									<AbsDimension x="0" y="0"/>
+								</Offset>
+							</Anchor>
+						</Anchors>
+					</CheckButton>
+					<CheckButton name="$parent_Chat5" inherits="PyTemp_Check_Template" id="2">
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeTo="$parent_Chat4" relativePoint="BOTTOMLEFT">
+								<Offset>
+									<AbsDimension x="0" y="0"/>
+								</Offset>
+							</Anchor>
+						</Anchors>
+					</CheckButton>
+					<CheckButton name="$parent_Chat6" inherits="PyTemp_Check_Template" id="2">
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeTo="$parent_Chat5" relativePoint="BOTTOMLEFT">
+								<Offset>
+									<AbsDimension x="0" y="0"/>
+								</Offset>
+							</Anchor>
+						</Anchors>
+					</CheckButton>
+					<CheckButton name="$parent_Chat7" inherits="PyTemp_Check_Template" id="2">
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeTo="$parent_Chat6" relativePoint="BOTTOMLEFT">
+								<Offset>
+									<AbsDimension x="0" y="0"/>
+								</Offset>
+							</Anchor>
+						</Anchors>
+					</CheckButton>
+					<CheckButton name="$parent_Chat8" inherits="PyTemp_Check_Template" id="2">
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeTo="$parent_Chat7" relativePoint="BOTTOMLEFT">
+								<Offset>
+									<AbsDimension x="0" y="0"/>
+								</Offset>
+							</Anchor>
+						</Anchors>
+					</CheckButton>
+					<CheckButton name="$parent_Chat9" inherits="PyTemp_Check_Template" id="2">
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeTo="$parent_Chat8" relativePoint="BOTTOMLEFT">
+								<Offset>
+									<AbsDimension x="0" y="0"/>
+								</Offset>
+							</Anchor>
+						</Anchors>
+					</CheckButton>
+					<CheckButton name="$parent_Chat10" inherits="PyTemp_Check_Template" id="2">
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeTo="$parent_Chat9" relativePoint="BOTTOMLEFT">
+								<Offset>
+									<AbsDimension x="0" y="0"/>
+								</Offset>
+							</Anchor>
+						</Anchors>
+					</CheckButton>
+
+					<CheckButton name="$parent_SAY" inherits="PyTemp_Check_Template" id="3">
+						<Anchors>
+							<Anchor point="LEFT" relativeTo="$parent_Chat1" relativePoint="RIGHT">
+								<Offset>
+									<AbsDimension x="150" y="0"/>
+								</Offset>
+							</Anchor>
+						</Anchors>
+					</CheckButton>
+					<CheckButton name="$parent_ZONE" inherits="PyTemp_Check_Template" id="3">
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeTo="$parent_SAY" relativePoint="BOTTOMLEFT">
+								<Offset>
+									<AbsDimension x="0" y="0"/>
+								</Offset>
+							</Anchor>
+						</Anchors>
+					</CheckButton>
+					<CheckButton name="$parent_PARTY" inherits="PyTemp_Check_Template" id="3">
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeTo="$parent_ZONE" relativePoint="BOTTOMLEFT">
+								<Offset>
+									<AbsDimension x="0" y="0"/>
+								</Offset>
+							</Anchor>
+						</Anchors>
+					</CheckButton>
+					<CheckButton name="$parent_GUILD" inherits="PyTemp_Check_Template" id="3">
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeTo="$parent_PARTY" relativePoint="BOTTOMLEFT">
+								<Offset>
+									<AbsDimension x="0" y="0"/>
+								</Offset>
+							</Anchor>
+						</Anchors>
+					</CheckButton>
+					<CheckButton name="$parent_WHISPER" inherits="PyTemp_Check_Template" id="3">
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeTo="$parent_GUILD" relativePoint="BOTTOMLEFT">
+								<Offset>
+									<AbsDimension x="0" y="0"/>
+								</Offset>
+							</Anchor>
+						</Anchors>
+					</CheckButton>
+					<CheckButton name="$parent_CHANNEL" inherits="PyTemp_Check_Template" id="3">
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeTo="$parent_WHISPER" relativePoint="BOTTOMLEFT">
+								<Offset>
+									<AbsDimension x="0" y="0"/>
+								</Offset>
+							</Anchor>
+						</Anchors>
+					</CheckButton>
+					<CheckButton name="$parent_YELL" inherits="PyTemp_Check_Template" id="3">
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeTo="$parent_CHANNEL" relativePoint="BOTTOMLEFT">
+								<Offset>
+									<AbsDimension x="0" y="0"/>
+								</Offset>
+							</Anchor>
+						</Anchors>
+					</CheckButton>
+
+					<CheckButton name="$parent_SYSTEM" inherits="PyTemp_Check_Template" id="3">
+						<Anchors>
+							<Anchor point="LEFT" relativeTo="$parent_SAY" relativePoint="RIGHT">
+								<Offset>
+									<AbsDimension x="150" y="0"/>
+								</Offset>
+							</Anchor>
+						</Anchors>
+					</CheckButton>
+					<CheckButton name="$parent_GM" inherits="PyTemp_Check_Template" id="3">
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeTo="$parent_SYSTEM" relativePoint="BOTTOMLEFT">
+								<Offset>
+									<AbsDimension x="0" y="0"/>
+								</Offset>
+							</Anchor>
+						</Anchors>
+					</CheckButton>
+					<CheckButton name="$parent_COMBAT" inherits="PyTemp_Check_Template" id="3">
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeTo="$parent_GM" relativePoint="BOTTOMLEFT">
+								<Offset>
+									<AbsDimension x="0" y="0"/>
+								</Offset>
+							</Anchor>
+						</Anchors>
+					</CheckButton>
+					<CheckButton name="$parent_CMD" inherits="PyTemp_Check_Template" id="3">
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeTo="$parent_COMBAT" relativePoint="BOTTOMLEFT">
+								<Offset>
+									<AbsDimension x="0" y="0"/>
+								</Offset>
+							</Anchor>
+						</Anchors>
+					</CheckButton>
+					<CheckButton name="$parent_SLASH" inherits="PyTemp_Check_Template" id="3">
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeTo="$parent_CMD" relativePoint="BOTTOMLEFT">
+								<Offset>
+									<AbsDimension x="0" y="0"/>
+								</Offset>
+							</Anchor>
+						</Anchors>
+					</CheckButton>
+				</Frames>
+			</Frame>
+			<Frame name="$parent_Dropdown" inherits="UIDropDownMenuTemplate" hidden="true" />
+		</Frames>
+		<Scripts>
+			<OnLoad>
+				Translator.OnLoad(this)
+			</OnLoad>
+		</Scripts>
+	</Frame>
+	
+</Ui>
