@@ -1,11 +1,11 @@
-if not ptl then ChatFrame1:AddMessage("|cffff0000Translator error: ptl not found!") return end
-if not pylib then print("|cffff0000Translator error: pylib not found!") return end
+if not ptl then ChatFrame1:AddMessage("|cffff0000Translator Error: PyTemp not found!") return end
+if not pylib then print("|cffff0000Translator Error: PyLib not found!") return end
 local py_lib, py_timer, py_string, py_table, py_num, py_hash, py_color, py_hook, py_callback, py_item, py_helper = pylib.GetLibraries()
 
 local me = {
 	name = "Translator",
 	version = "v1.0",
-	path = "interface/addons/Translator",
+	path = "interface/addons/RoM-Translator",
 	hooks = {},
 	children = {
 		-- loca
@@ -126,8 +126,8 @@ function me.RegisterWithAddonManager()
 			slashCommands="/tr",
 			version = me.version,
 			configFrame = Translator_Frame,
-			icon = "interface\\addons\\Translator\\img\\icon.png",
-			mini_icon = "interface\\addons\\Translator\\img\\icon.png",
+			icon = "interface\\addons\\RoM-Translator\\img\\icon.png",
+			mini_icon = "interface\\addons\\RoM-Translator\\img\\icon.png",
 		}
 		AddonManager.RegisterAddonTable(addon)
 		TranslatorMinimap:Hide()

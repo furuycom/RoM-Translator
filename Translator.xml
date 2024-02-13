@@ -10,8 +10,8 @@
 				</Offset>
 			</Anchor>
 		</Anchors>
-		<NormalTexture file="interface\addons\Translator\img\icon.png"/>
-		<PushedTexture file="interface\addons\Translator\img\icon.png"/>
+		<NormalTexture file="interface\addons\RoM-Translator\img\icon.png"/>
+		<PushedTexture file="interface\addons\RoM-Translator\img\icon.png"/>
 		<Scripts>
 			<OnClick>
 				ToggleUIFrame(Translator_Frame)
