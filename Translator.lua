@@ -250,7 +250,7 @@ me.OnLoad = function(frame)
 end
 
 me.InitFrames = function()
-	me._Frame:SetTitle(me.loca.GetText("name", "CopyChat"))
+	me._Frame:SetTitle(me.loca.GetText("name", "Translator"))
 	local def = {
 		{VisibleOnShow=true, Text = me.loca.GetText("tab.Frame", "_Frames"), 	Frame=me._Frames, OnClick=me.FilterFramesList},
 		{VisibleOnShow=false, Text = me.loca.GetText("tab.Event", "_Events"), 	Frame=me._Events, OnClick=me.FilterEventList},
@@ -322,11 +322,24 @@ me.ConfigOnEnter = function(frame)
 	end
 end
 
+function urlencode(str)
+    if (str) then
+        str = string.gsub(str, "\n", "\r\n")
+        str = string.gsub(str, "([^%w %-%_%.%~])", function(c)
+            return string.format("%%%02X", string.byte(c))
+        end)
+        str = string.gsub(str, " ", "+")
+    end
+    return str
+end
+
 function RemoveColorCodes(text)
     -- Renk kodlarını temizle
-    text = string.gsub(text, "|c%x%x%x%x%x%x%x%x", "")  -- Başlangıç renk kodunu sil
-    text = string.gsub(text, "|r", "")  -- Renk kodu bitiş işaretini sil
-    return text
+    text = string.gsub(text, "|c%x%x%x%x%x%x%x%x", "")
+    text = string.gsub(text, "|r", "")
+	text = string.gsub(text, "|[^|]+:.-|h", "")
+	text = string.gsub(text, "|h", "")
+	return text
 end
 
 me.OnListClicked = function(button, index, column, frame, caller,...)
@@ -338,12 +351,10 @@ me.OnListClicked = function(button, index, column, frame, caller,...)
         ToggleDropDownMenu(me._Dropdown, 1, {lst_frame, index, column}, caller:GetName(), 1 ,1 )
     elseif button=="LBUTTON" then
         local cleanedText = RemoveColorCodes(lst[index][column] or "")
-		--StaticPopupDialogs["OPEN_WEBROWER"].link = linkData;
-		--StaticPopup_Show("OPEN_WEBROWER");
-		GC_OpenWebRadio("https://translate.google.com/?sl=auto&tl=auto&text=" ..  cleanedText)
+        local encodedText = urlencode(cleanedText)
+        GC_OpenWebRadio("https://translate.google.com/?sl=auto&tl=auto&text=" ..  encodedText)
     end
 end
-
 
 me.OnButtonClick = function(frame, key, typ)
 	local id = frame:GetID()
@@ -516,8 +527,8 @@ me.ShowDropdown = function()
 	end
 end
 
-SLASH_AdvancedTR1= "/tr"
-SlashCmdList["AdvancedTR"] = function (editBox, msg)
+SLASH_RoMTranslator1= "/tr"
+SlashCmdList["RoMTranslator"] = function (editBox, msg)
 	ToggleUIFrame(Translator_Frame)
 end
 ptl.CreateTable(me, me.name, nil, _G) --Create Parent
